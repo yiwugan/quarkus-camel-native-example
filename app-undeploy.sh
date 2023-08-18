@@ -1,0 +1,1 @@
+mvn oc:undeploy
