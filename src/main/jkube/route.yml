@@ -3,4 +3,4 @@ spec:
     termination: edge
   to:
     kind: Service
-    name: quarkus-camel-example     
+    name: quarkus-camel-native-example     
