@@ -1,0 +1,6 @@
+spec:
+  tls:
+    termination: edge
+  to:
+    kind: Service
+    name: quarkus-camel-example     

@@ -1,0 +1,3 @@
+metadata:
+  annotations:
+    jkube.eclipse.org/cm/application.properties: ${project.basedir}/src/main/config/application.properties
