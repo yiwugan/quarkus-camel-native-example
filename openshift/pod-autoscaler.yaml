@@ -1,0 +1,26 @@
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: quarkus-camel-native-example
+  labels:
+    app: quarkus-camel-native-example
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: quarkus-camel-native-example
+  minReplicas: 1
+  maxReplicas: 4
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: AverageValue
+          averageValue: 400m
+    - type: Resource
+      resource:
+        name: memory 
+        target:
+          type: AverageValue
+          averageValue: 400Mi
