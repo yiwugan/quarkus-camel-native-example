@@ -279,7 +279,7 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<groupId>	</groupId>
+				<groupId>org.eclipse.jkube</groupId>
 				<artifactId>openshift-maven-plugin</artifactId>
 				<version>${jkube.version}</version>
 				<configuration>
