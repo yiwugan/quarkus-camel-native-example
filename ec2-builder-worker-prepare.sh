@@ -14,6 +14,6 @@ sudo mv apache-maven-3.8.8 /opt
 sudo ln -s /opt/apache-maven-3.8.8 /opt/maven
 sudo ln -s /opt/maven/bin/mvn /usr/local/bin/mvn
 
-wget https://downloads-openshift-console.apps.sandbox-m2.ll9k.p1.openshiftapps.com/amd64/linux/oc.tar
+wget https://<download0link>/oc.tar
 tar -xf oc.tar
 sudo mv oc /bin
