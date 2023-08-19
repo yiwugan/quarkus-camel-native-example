@@ -1,0 +1,15 @@
+2023-08-18 23:26:17,398 INFO [org.apa.cam.mai.MainSupport] (main) Apache Camel (Main) 4.0.0-RC2 is starting
+2023-08-18 23:26:17,405 INFO [org.apa.cam.mai.BaseMainSupport] (main) Auto-configuration summary
+2023-08-18 23:26:17,405 INFO [org.apa.cam.mai.BaseMainSupport] (main) [MicroProfilePropertiesSource] camel.context.name=integration-api-demo-camel-context
+2023-08-18 23:26:17,415 INFO [org.apa.cam.imp.eng.AbstractCamelContext] (main) Apache Camel 4.0.0-RC2 (integration-api-demo-camel-context) is starting
+2023-08-18 23:26:17,422 INFO [org.apa.cam.imp.eng.AbstractCamelContext] (main) Routes startup (started:3)
+2023-08-18 23:26:17,422 INFO [org.apa.cam.imp.eng.AbstractCamelContext] (main) Started badssl-untrusted-route (direct://badssl-untrusted)
+2023-08-18 23:26:17,422 INFO [org.apa.cam.imp.eng.AbstractCamelContext] (main) Started route1 (rest-api:///apis/badssl/v1/api-doc)
+2023-08-18 23:26:17,422 INFO [org.apa.cam.imp.eng.AbstractCamelContext] (main) Started route2 (rest://get:/apis/badssl/v1:/untrustedroot)
+2023-08-18 23:26:17,422 INFO [org.apa.cam.imp.eng.AbstractCamelContext] (main) Apache Camel 4.0.0-RC2 (integration-api-demo-camel-context) started in 7ms (build:0ms init:0ms start:7ms)
+2023-08-18 23:26:17,424 INFO [io.quarkus] (main) quarkus-camel-native-example 1.0 native (powered by Quarkus 3.0.1.Final) started in 0.048s. Listening on: http://0.0.0.0:8080
+2023-08-18 23:26:17,424 INFO [io.quarkus] (main) Profile prod activated.
+2023-08-18 23:26:17,424 INFO [io.quarkus] (main) Installed features: [camel-attachments, camel-bean, camel-core, camel-direct, camel-http, camel-jackson, camel-microprofile-health, camel-openapi-java, camel-platform-http, camel-rest, camel-xml-io-dsl, cdi, micrometer, smallrye-context-propagation, smallrye-health, vertx]
+2023-08-18 23:32:04,659 INFO [route2] (executor-thread-2) rest endpoint received request
+2023-08-18 23:32:04,659 INFO [badssl-untrusted-route] (executor-thread-2) badssl-untrusted-route before calling badssl untrusted https://untrusted-root.badssl.com
+2023-08-18 23:32:04,807 INFO [badssl-untrusted-route] (executor-thread-2) badssl-untrusted-route after calling badssl untrusted

@@ -1,0 +1,19 @@
+INFO exec java -Djavax.net.ssl.trustStore=/quarkus-camel-native-example/config/badssl.cacerts -Djavax.net.ssl.trustStorePassword=changeit -javaagent:/usr/share/java/jolokia-jvm-agent/jolokia-jvm.jar=config=/opt/jboss/container/jolokia/etc/jolokia.properties -javaagent:/usr/share/java/prometheus-jmx-exporter/jmx_prometheus_javaagent.jar=9779:/opt/jboss/container/prometheus/etc/jmx-exporter-config.yaml -Xms100m -Xmx400m -XX:MinHeapFreeRatio=10 -XX:MaxHeapFreeRatio=20 -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -XX:ParallelGCThreads=1 -Djava.util.concurrent.ForkJoinPool.common.parallelism=1 -XX:CICompilerCount=2 -XX:+ExitOnOutOfMemoryError -cp "." -jar /deployments/quarkus-run.jar
+I> No access restrictor found, access to any MBean is allowed
+Jolokia: Agent started with URL https://10.128.2.155:8778/jolokia/
+Aug 18, 2023 10:07:34 PM org.apache.camel.quarkus.core.CamelBootstrapRecorder start
+INFO: Bootstrap runtime: org.apache.camel.quarkus.main.CamelMainRuntime
+2023-08-18 22:07:34,424 INFO [org.apa.cam.mai.MainSupport] (main) Apache Camel (Main) 4.0.0-RC2 is starting
+2023-08-18 22:07:34,699 INFO [org.apa.cam.mai.BaseMainSupport] (main) Auto-configuration summary
+2023-08-18 22:07:34,699 INFO [org.apa.cam.mai.BaseMainSupport] (main) [MicroProfilePropertiesSource] camel.context.name=integration-api-demo-camel-context
+2023-08-18 22:07:35,315 INFO [org.apa.cam.imp.eng.AbstractCamelContext] (main) Apache Camel 4.0.0-RC2 (integration-api-demo-camel-context) is starting
+2023-08-18 22:07:35,511 INFO [org.apa.cam.imp.eng.AbstractCamelContext] (main) Routes startup (started:3)
+2023-08-18 22:07:35,511 INFO [org.apa.cam.imp.eng.AbstractCamelContext] (main) Started badssl-untrusted-route (direct://badssl-untrusted)
+2023-08-18 22:07:35,511 INFO [org.apa.cam.imp.eng.AbstractCamelContext] (main) Started route1 (rest-api:///apis/badssl/v1/api-doc)
+2023-08-18 22:07:35,511 INFO [org.apa.cam.imp.eng.AbstractCamelContext] (main) Started route2 (rest://get:/apis/badssl/v1:/untrustedroot)
+2023-08-18 22:07:35,511 INFO [org.apa.cam.imp.eng.AbstractCamelContext] (main) Apache Camel 4.0.0-RC2 (integration-api-demo-camel-context) started in 195ms (build:0ms init:0ms start:195ms)
+Aug 18, 2023 10:07:35 PM io.quarkus.bootstrap.runner.Timing printStartupTime
+INFO: quarkus-camel-native-example 1.0 on JVM (powered by Quarkus 3.0.1.Final) started in 4.726s. Listening on: http://0.0.0.0:8080
+Aug 18, 2023 10:07:35 PM io.quarkus.bootstrap.runner.Timing printStartupTime
+INFO: Profile prod activated.
+Aug 18, 2023 10:07:35 PM io.quarkus.bootstrap.runner.Timing printStartupTime

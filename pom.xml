@@ -7,24 +7,24 @@
 	<name>${project.artifactId}</name>
 	<description>Quarkus Native Camel Example. Image save into ECR. Deploy to Openshift Sandbox</description>
 	<properties>
+		<registry-server>aws-accountid.dkr.ecr.ca-central-1.amazonaws.com</registry-server>
 		<image.tag>${project.version}_${buildNumber}</image.tag>
-		<image.uri>208164606460.dkr.ecr.ca-central-1.amazonaws.com/quarkus-camel-example:${image.tag}</image.uri>
+		<image.uri>${registry-server}/quarkus-camel-native-example:${image.tag}</image.uri>
 		
-		<!-- disable route by default, child pom can override to true if required -->
+		<!-- enable route to expose api -->
 		<jkube.openshift.generateRoute>true</jkube.openshift.generateRoute>
-		<!-- default app name in openshift, child pom can override to versioned name if required -->
+		<!-- resource names in openshift -->
 		<jkube.enricher.jkube-name.name>${project.artifactId}</jkube.enricher.jkube-name.name>
 		<jkube.enricher.jkube-project-label.app>${jkube.enricher.jkube-name.name}</jkube.enricher.jkube-project-label.app>
-		<!-- below settings for AWS ECR registry -->
+		<!-- below settings is to use AWS ECR registry  in S2I build config-->
 		<jkube.build.strategy>docker</jkube.build.strategy>
 		<jkube.build.buildOutput.kind>DockerImage</jkube.build.buildOutput.kind>
 		<jkube.enricher.jkube-controller.type>Deployment</jkube.enricher.jkube-controller.type>
-		<!-- image URI for ECR, format rosa-deployment.image-registry/repo:image-app-name_tag-name -->
-		<!-- rosa-deployment.image-registry will be overrided by pipeline -->
+		<!-- image full name -->
 		<jkube.generator.name>${image.uri}</jkube.generator.name>
-		<!-- ECR secret name, auto created and updated by Openshift ECR Secret Operator-->
+		<!-- ECR secret name -->
 		<jkube.build.pushSecret>ecr-docker-secret</jkube.build.pushSecret>
-		<!-- buildconfig name suffix, use buildNumber to avoid name conflict-->
+		<!-- buildconfig name suffix, optional-->
 		<jkube.s2i.buildNameSuffix>-${project.version}-s2i</jkube.s2i.buildNameSuffix>
 		
 		<!-- dependency version properties -->
