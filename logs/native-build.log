@@ -1,0 +1,57 @@
+[INFO] [io.quarkus.deployment.pkg.steps.JarResultBuildStep] Building native image source jar: /home/ec2-user/quarkus-camel-native-example/target/quarkus-camel-native-example-1.0-native-image-source-jar/quarkus-camel-native-example-1.0-runner.jar
+[INFO] [io.quarkus.deployment.pkg.steps.NativeImageBuildStep] Building native image from /home/ec2-user/quarkus-camel-native-example/target/quarkus-camel-native-example-1.0-native-image-source-jar/quarkus-camel-native-example-1.0-runner.jar
+[INFO] [io.quarkus.deployment.pkg.steps.NativeImageBuildContainerRunner] Using docker to run the native image builder
+[INFO] [io.quarkus.deployment.pkg.steps.NativeImageBuildContainerRunner] Checking image status quay.io/quarkus/ubi-quarkus-mandrel-builder-image:22.3-java17
+22.3-java17: Pulling from quarkus/ubi-quarkus-mandrel-builder-image
+Digest: sha256:838525624c37a09be38a1f6b6bf44c5a955fb41fa0a0bdab5b0257ce86d433fc
+Status: Image is up to date for quay.io/quarkus/ubi-quarkus-mandrel-builder-image:22.3-java17
+quay.io/quarkus/ubi-quarkus-mandrel-builder-image:22.3-java17
+[INFO] [io.quarkus.deployment.pkg.steps.NativeImageBuildStep] Running Quarkus native-image plugin on native-image 22.3.3.1-Final Mandrel Distribution (Java Version 17.0.8+7)
+[INFO] [io.quarkus.deployment.pkg.steps.NativeImageBuildRunner] docker run --env LANG=C --rm --user 1000:1000 -v /home/ec2-user/quarkus-camel-native-example/target/quarkus-camel-native-example-1.0-native-image-source-jar:/project:z --name build-native-hwqIT quay.io/quarkus/ubi-quarkus-mandrel-builder-image:22.3-java17 -J-Djava.util.logging.manager=org.jboss.logmanager.LogManager -J-Dlogging.initial-configurator.min-level=500 -J-Dsun.nio.ch.maxUpdateArraySize=100 -J-Dio.netty.leakDetection.level=DISABLED -J-Dio.netty.allocator.maxOrder=3 -J-Dvertx.logger-delegate-factory-class-name=io.quarkus.vertx.core.runtime.VertxLogDelegateFactory -J-Dvertx.disableDnsResolver=true -J-Duser.language=en -J-Duser.country=US -J-Dfile.encoding=UTF-8 --features=io.quarkus.runner.Feature,io.quarkus.runtime.graal.DisableLoggingFeature -J--add-exports=java.security.jgss/sun.security.krb5=ALL-UNNAMED -J--add-opens=java.base/java.text=ALL-UNNAMED -J--add-opens=java.base/java.io=ALL-UNNAMED -J--add-opens=java.base/java.lang.invoke=ALL-UNNAMED -J--add-opens=java.base/java.util=ALL-UNNAMED -H:+CollectImageBuildStatistics -H:ImageBuildStatisticsFile=quarkus-camel-native-example-1.0-runner-timing-stats.json -H:BuildOutputJSONFile=quarkus-camel-native-example-1.0-runner-build-output-stats.json -H:+AllowFoldMethods -J-Djava.awt.headless=true --no-fallback --link-at-build-time -H:+ReportExceptionStackTraces -H:-AddAllCharsets --enable-url-protocols=http,https -H:-UseServiceLoaderFeature -H:+StackTrace -J--add-exports=org.graalvm.sdk/org.graalvm.nativeimage.impl=ALL-UNNAMED --exclude-config io\.netty\.netty-codec /META-INF/native-image/io\.netty/netty-codec/generated/handlers/reflect-config\.json --exclude-config io\.netty\.netty-handler /META-INF/native-image/io\.netty/netty-handler/generated/handlers/reflect-config\.json quarkus-camel-native-example-1.0-runner -jar quarkus-camel-native-example-1.0-runner.jar
+========================================================================================================================
+GraalVM Native Image: Generating 'quarkus-camel-native-example-1.0-runner' (executable)...
+========================================================================================================================
+Warning: Could not resolve org.apache.commons.logging.impl.LogFactoryImpl for reflection configuration. Reason: java.lang.ClassNotFoundException: org.apache.commons.logging.impl.LogFactoryImpl.
+Warning: Could not resolve org.apache.commons.logging.impl.Jdk14Logger for reflection configuration. Reason: java.lang.ClassNotFoundException: org.apache.commons.logging.impl.Jdk14Logger.
+[1/7] Initializing...                                                                                   (16.1s @ 0.43GB)
+ Version info: 'GraalVM 22.3.3.1-Final Java 17 Mandrel Distribution'
+ Java version info: '17.0.8+7'
+ C compiler: gcc (redhat, x86_64, 8.5.0)
+ Garbage collector: Serial GC
+ 3 user-specific feature(s)
+ - io.quarkus.runner.Feature: Auto-generated class by Quarkus from the existing extensions
+ - io.quarkus.runtime.graal.DisableLoggingFeature: Disables INFO logging during the analysis phase
+ - org.eclipse.angus.activation.nativeimage.AngusActivationFeature
+[2/7] Performing analysis...  [************]                                                           (196.7s @ 1.84GB)
+  19,592 (88.34%) of 22,177 classes reachable
+  29,108 (64.42%) of 45,185 fields reachable
+  97,425 (59.65%) of 163,338 methods reachable
+     990 classes,   209 fields, and 9,322 methods registered for reflection
+      64 classes,    70 fields, and    55 methods registered for JNI access
+       4 native libraries: dl, pthread, rt, z
+[3/7] Building universe...                                                                              (24.0s @ 1.89GB)
+[4/7] Parsing methods...      [****]                                                                    (20.0s @ 1.81GB)
+[5/7] Inlining methods...     [***]                                                                     (10.4s @ 2.16GB)
+[6/7] Compiling methods...    [***********]                                                            (137.2s @ 2.22GB)
+[7/7] Creating image...                                                                                 (10.4s @ 2.48GB)
+  38.46MB (45.62%) for code area:    63,563 compilation units
+  45.52MB (53.99%) for image heap:  440,029 objects and 701 resources
+ 337.48KB ( 0.39%) for other data
+  84.31MB in total
+------------------------------------------------------------------------------------------------------------------------
+Top 10 packages in code area:                               Top 10 object types in image heap:
+   1.63MB sun.security.ssl                                    10.63MB java.lang.Class
+   1.11MB java.util                                            8.45MB byte[] for code metadata
+ 829.28KB org.apache.camel.impl.engine                         4.06MB java.lang.String
+ 738.48KB java.lang.invoke                                     3.57MB byte[] for general heap data
+ 724.37KB org.apache.camel.main                                3.53MB byte[] for java.lang.String
+ 720.75KB com.sun.crypto.provider                              3.17MB byte[] for embedded resources
+ 614.11KB org.apache.camel.xml.in                              1.64MB com.oracle.svm.core.hub.DynamicHubCompanion
+ 574.31KB org.apache.camel.support                             1.32MB byte[] for reflection metadata
+ 514.87KB java.util.concurrent                               805.82KB java.lang.String[]
+ 487.57KB com.sun.org.apache.xerces.internal.impl            735.42KB java.util.HashMap$Node
+  30.17MB for 740 more packages                                7.35MB for 4266 more object types
+------------------------------------------------------------------------------------------------------------------------
+                       28.2s (6.6% of total time) in 106 GCs | Peak RSS: 4.53GB | CPU load: 1.85
+------------------------------------------------------------------------------------------------------------------------
+P

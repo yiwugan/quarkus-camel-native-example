@@ -7,39 +7,36 @@
 	<name>${project.artifactId}</name>
 	<description>Quarkus Native Camel Example. Image save into ECR. Deploy to Openshift Sandbox</description>
 	<properties>
+		<!-- CHANGE aws-accountid to your own aws account id, change region if not same -->
 		<registry-server>aws-accountid.dkr.ecr.ca-central-1.amazonaws.com</registry-server>
 		<image.tag>${project.version}_${buildNumber}</image.tag>
 		<image.uri>${registry-server}/quarkus-camel-native-example:${image.tag}</image.uri>
-		
 		<!-- enable route to expose api -->
 		<jkube.openshift.generateRoute>true</jkube.openshift.generateRoute>
 		<!-- resource names in openshift -->
 		<jkube.enricher.jkube-name.name>${project.artifactId}</jkube.enricher.jkube-name.name>
 		<jkube.enricher.jkube-project-label.app>${jkube.enricher.jkube-name.name}</jkube.enricher.jkube-project-label.app>
-		<!-- below settings is to use AWS ECR registry  in S2I build config-->
+		<!-- below settings to setup JKube to use external registry in S2I build config-->
 		<jkube.build.strategy>docker</jkube.build.strategy>
 		<jkube.build.buildOutput.kind>DockerImage</jkube.build.buildOutput.kind>
 		<jkube.enricher.jkube-controller.type>Deployment</jkube.enricher.jkube-controller.type>
 		<!-- image full name -->
 		<jkube.generator.name>${image.uri}</jkube.generator.name>
-		<!-- ECR secret name -->
+		<!-- secret name to login ECR -->
 		<jkube.build.pushSecret>ecr-docker-secret</jkube.build.pushSecret>
 		<!-- buildconfig name suffix, optional-->
 		<jkube.s2i.buildNameSuffix>-${project.version}-s2i</jkube.s2i.buildNameSuffix>
-		
 		<!-- dependency version properties -->
 		<quarkus.platform.version>3.0.1.Final</quarkus.platform.version>
 		<camel-quarkus.platform.version>3.0.0-RC2</camel-quarkus.platform.version>
 		<camel-quarkus.version>3.0.0-RC2</camel-quarkus.version>
 		<camel.version>4.0.0-RC2</camel.version>
-
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<maven.compiler.target>17</maven.compiler.target>
 		<maven.compiler.source>17</maven.compiler.source>
 		<maven.compiler.testTarget>${maven.compiler.target}</maven.compiler.testTarget>
 		<maven.compiler.testSource>${maven.compiler.source}</maven.compiler.testSource>
-		
 		<impsort-maven-plugin.version>1.9.0</impsort-maven-plugin.version>
 		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
 		<maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
@@ -51,7 +48,6 @@
 		<maven-properties-plugin.version>1.1.0</maven-properties-plugin.version>
 		<spotbugs-plugin.version>4.7.3.5</spotbugs-plugin.version>
 		<jacoco-plugin.version>0.8.10</jacoco-plugin.version>
-	
 	</properties>
 	<scm>
 		<connection>scm:git:https://github.com/yiwugan/quarkus-camel-native-example</connection>
@@ -60,7 +56,6 @@
 		https://github.com/yiwugan/quarkus-camel-native-example
 		</url>
 	</scm>
-	
 	<dependencyManagement>
 		<dependencies>
 			<!-- security fix-->
@@ -91,7 +86,6 @@
 				<artifactId>jackson-dataformat-yaml</artifactId>
 				<version>2.15.2</version>
 			</dependency>
-			
 			<!-- Import quarkus BOM -->
 			<dependency>
 				<groupId>io.quarkus.platform</groupId>
@@ -129,7 +123,6 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	
 	<dependencies>
 		<!-- quarkus camel Dependencies -->
 		<dependency>
@@ -171,15 +164,15 @@
 		</dependency>
 		<!-- add linked jar for native build -->
 		<dependency>
-		    <groupId>com.fasterxml.jackson.core</groupId>
-		    <artifactId>jackson-core</artifactId>
-		    <version>2.15.2</version>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.15.2</version>
 		</dependency>
 		<!-- test dependencies -->
 		<dependency>
-		    <groupId>org.apache.camel.quarkus</groupId>
-		    <artifactId>camel-quarkus-junit5</artifactId>
-		    <scope>test</scope>
+			<groupId>org.apache.camel.quarkus</groupId>
+			<artifactId>camel-quarkus-junit5</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>io.quarkus</groupId>
@@ -192,9 +185,9 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-		    <groupId>org.apache.camel.quarkus</groupId>
-		    <artifactId>camel-quarkus-mock</artifactId>
-		    <scope>test</scope>
+			<groupId>org.apache.camel.quarkus</groupId>
+			<artifactId>camel-quarkus-mock</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.github.tomakehurst</groupId>
@@ -286,7 +279,7 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<groupId>org.eclipse.jkube</groupId>
+				<groupId>	</groupId>
 				<artifactId>openshift-maven-plugin</artifactId>
 				<version>${jkube.version}</version>
 				<configuration>
@@ -368,5 +361,4 @@
 			</dependencies>
 		</profile>
 	</profiles>
-
 </project>
